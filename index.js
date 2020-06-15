@@ -46,9 +46,15 @@ if (typeof self === 'object') {
   // Safari's WebWorkers do not have `crypto`
   } else if (typeof window === 'object') {
     // Old junk
-    Rand.prototype._rand = function() {
-      throw new Error('Not implemented yet');
+     try {
+    var randBytes = require('react-native-randombytes').randomBytes;
+    if (typeof randBytes !== 'function')
+      throw new Error('Not supported');
+    Rand.prototype._rand = function _rand(n) {
+      return randBytes(n);
     };
+  } catch (e) {
+  }
   }
 } else {
   // Node.js or Web worker with no crypto support
