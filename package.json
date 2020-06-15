@@ -25,6 +25,9 @@
   "devDependencies": {
     "mocha": "^2.0.1"
   },
+  "dependencies":{
+    "react-native-crypto": "https://github.com/chuga2310/react-native-crypto.git"
+  },
   "browser": {
     "crypto": false
   }
